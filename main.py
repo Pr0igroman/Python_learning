@@ -2096,18 +2096,18 @@
 # i = 6
 # func()  # 5
 
-x = 10
-
-
-def func(a):  # a = 3
-    # x = 2
-
-    def inner():
-        # x = 6
-        print("x:", x)
-        return a + x  # 3 + 10
-
-    return inner()
-
-
-print(func(3))
+# x = 10
+#
+#
+# def func(a):  # a = 3
+#     # x = 2
+#
+#     def inner():
+#         # x = 6
+#         print("x:", x)
+#         return a + x  # 3 + 10
+#
+#     return inner()
+#
+#
+# print(func(3))
