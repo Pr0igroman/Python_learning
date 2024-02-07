@@ -195,3 +195,4 @@ git clone https://github.com/Helen-prog/Python317.git
 git pull
 - забирает измения с удаленного репозитория в локальный
 
+Забрал с GitHub
