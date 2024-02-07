@@ -1104,18 +1104,19 @@
 # print(time.strftime("%c"))
 
 
-def change(lst):
-    # lst = list(lst.split(" "))
-    lst[0], lst[-1] = lst[-1], lst[0]
-    print(lst)
+# def change(lst):
+#     # lst = list(lst.split(" "))
+#     lst[0], lst[-1] = lst[-1], lst[0]
+#     print(lst)
+#
+#
+# change([1, 2, 3])
+# change([9, 12, 33, 54, 105])
+# change(["с", "л", "о", "н"])
+# figure = input("Выберите фигуру: 1- треугольник, 2- прямоугольник, 3- круг: ")
+# match figure:
+#     case "1":
+#         a = int(input("Введите основание: "))
+#         h = int(input("Введите высоту: "))
+#         print("Площадь треугольника равна:", (a*h)/2)
 
-
-change([1, 2, 3])
-change([9, 12, 33, 54, 105])
-change(["с", "л", "о", "н"])
-figure = input("Выберите фигуру: 1- треугольник, 2- прямоугольник, 3- круг: ")
-match figure:
-    case "1":
-        a = int(input("Введите основание: "))
-        h = int(input("Введите высоту: "))
-        print("Площадь треугольника равна:", (a*h)/2)
