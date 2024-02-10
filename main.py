@@ -1562,8 +1562,8 @@
 # print("Изменения внесенные на другой машине")
 
 # s = ['ab_1', 'ac_2', 'bc_1', 'bc_2']
-# # a = [x for x in s if 'a' not in x]
-# # a = ['A' + x[1:] if x[0] == 'a' else 'B' + x[1:] for x in s]
+# a = [x for x in s if 'a' not in x]
+# a = ['A' + x[1:] if x[0] == 'a' else 'B' + x[1:] for x in s]
 # a = ['A' + x[1:] if x[0] == 'a' else 'B' + x[1:] for x in s if x[1] == 'c']
 # print(a)
 # print(['A' + x[1:] if x[0] == 'a' else 'B' + x[1:] for x in ['ab_1', 'ac_2', 'bc_1', 'bc_2'] if x[1] == 'c'])
@@ -2111,3 +2111,9 @@
 #
 #
 # print(func(3))
+#
+# a = {"x1": 3, "x2": 7, "x3": 5, "x4": -1}
+#
+# x = 1 * a["x1"]* a["x2"] * a["x3"] * a["x4"]
+#
+# print(x)
