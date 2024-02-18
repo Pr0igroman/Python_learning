@@ -17,3 +17,5 @@ for i in range(num_student):
         print(name_student[i] + second_name_student[i] + "\n")
     else:
         continue
+#
+# Начал смотреть следующий урок и понял, что можно было решить чуть проще через словарь.
