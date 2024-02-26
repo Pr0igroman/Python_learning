@@ -1562,8 +1562,8 @@
 # print("Изменения внесенные на другой машине")
 
 # s = ['ab_1', 'ac_2', 'bc_1', 'bc_2']
-# a = [x for x in s if 'a' not in x]
-# a = ['A' + x[1:] if x[0] == 'a' else 'B' + x[1:] for x in s]
+# # a = [x for x in s if 'a' not in x]
+# # a = ['A' + x[1:] if x[0] == 'a' else 'B' + x[1:] for x in s]
 # a = ['A' + x[1:] if x[0] == 'a' else 'B' + x[1:] for x in s if x[1] == 'c']
 # print(a)
 # print(['A' + x[1:] if x[0] == 'a' else 'B' + x[1:] for x in ['ab_1', 'ac_2', 'bc_1', 'bc_2'] if x[1] == 'c'])
@@ -2111,9 +2111,897 @@
 #
 #
 # print(func(3))
+
+
+# students = {}
 #
-# a = {"x1": 3, "x2": 7, "x3": 5, "x4": -1}
+# n = int(input("Кол-во студентов: "))
+# s = 0
+# for i, key in enumerate(range(n), 1):
+#     name = input(str(i) + "-й студент: ")
+#     point = int(input("Балл: "))
+#     students[name] = point
+#     s += point
 #
-# x = 1 * a["x1"]* a["x2"] * a["x3"] * a["x4"]
+# average = s / n
+# print("Средний балл:", average)
+# for key in students:
+#     if students[key] > average:
+#         print(key)
+
+# sum = "Hello"
 #
-# print(x)
+# print(sum)
+#
+# lst = [1, 2, 3, 4, 5, 6, 4]
+# print(sum(lst))
+
+# def outer(who):
+#     def inner():
+#         print("Hello,", who)
+#
+#     inner()
+#
+#
+# outer("World!")
+
+
+# def fun1():
+#     a = 6  # 2
+#
+#     def fun2(b):  # b = 4
+#         a = 4  # 5  # a = 6
+#         print(a + b)  # 6  # a + b = 8 (10)
+#
+#     print("a:", a)  # 3
+#     fun2(4)  # 4
+#
+#
+# fun1()  # 1
+
+# x = 25
+# t = 0
+#
+#
+# def fn():
+#     global t
+#     a = 30  # 35
+#
+#     def inner():
+#         nonlocal a
+#         a = 35
+#         # print(a)
+#
+#     inner()
+#     t = a  # 35
+#
+#
+# fn()
+# q = x + t  # 25 + 35
+# print(q)  # 60
+
+# x = 5
+
+
+# def fn1():
+#     x = 25  # 55
+#
+#     def fn2():
+#         x = 33  # 55
+#
+#         def fn3():
+#             nonlocal x
+#             x = 55
+#
+#         fn3()
+#         print("fn2.x =", x)  # 33  55
+#
+#     fn2()
+#     print("fn1.x =", x)  # 25  55
+#
+#
+# fn1()
+
+# def outer(a1, b1, a2, b2):
+#     a = 0  # 1
+#     b = 0  # 7
+#
+#     def inner():
+#         nonlocal a, b
+#         a = a1 + a2
+#         b = b1 + b2
+#         # print("a:", a)
+#         # print("b:", b)
+#
+#     inner()
+#     return [a, b]
+#
+#
+# print(outer(2, 3, -1, 4))  # [1, 7]
+
+
+# Замыкание
+
+# def outer(n):  # 5
+#     def inner(x):  # 10
+#         return n + x
+#
+#     return inner
+#
+#
+# out1 = outer(5)
+# print(out1(10))
+#
+# out2 = outer(6)
+# print(out2(4))
+
+# print(outer(5)(10))
+
+
+# def func(a):
+#     return a + 2
+#
+#
+# var = func(5)
+# print(var)
+
+
+# def func1():
+#     a = 1
+#     b = "line"
+#     c = [1, 2, 3]
+#
+#     def func2():
+#         nonlocal a, b
+#         c.append(4)
+#         a = a + 1
+#         b = b + "_new"
+#         return a, b, c
+#
+#     return func2
+#
+#
+# func = func1()
+# print(func())
+
+
+# def func(city):
+#     count = 0  # 3  # 5
+#
+#     def inner():
+#         nonlocal count
+#         count += 1
+#         print(city, count)
+#
+#     return inner
+#
+#
+# res1 = func("Москва")
+# res1()
+# res1()
+#
+# res2 = func("Сочи")
+# res2()
+# res2()
+# res2()
+# res2()
+# res2()
+#
+# res1()
+# res1()
+# res1()
+# res1()
+
+
+# lambda - функция (выражение)
+
+# def func(x, y):
+#     return x + y
+#
+#
+# print(func(2, 3))
+
+# print((lambda x, y: x + y)(2, 3))
+# print((lambda x, y: x + y)(12, 3))
+
+# variable = lambda x, y: x + y
+#
+# print(variable(2, 3))
+
+# print((lambda x, y: x ** 2 + y ** 2)(2, 5))
+
+# print((lambda a, b, c: a + b + c)(10, 20, 30))
+# print((lambda a, b, c=3: a + b + c)(10, 20))
+# print((lambda a, b=2, c=3: a + b + c)(10))
+# print((lambda a=1, b=2, c=3: a + b + c)())
+
+# print((lambda *args: sum(args))(1, 2, 3, 4, 5, 6))
+# print((lambda *args: args)("a", "b", "c"))
+
+
+# c = (
+#     lambda x: x * 2,
+#     lambda x: x * 3,
+#     lambda x: x * 4,
+# )
+#
+# for t in c:
+#     print(t("abc_"))
+
+# def outer(n):
+#     def inner(x):
+#         return n + x
+#
+#     return inner
+#
+#
+# f = outer(5)
+# print(f(10))
+
+
+# def outer1(n):
+#     return lambda x: n + x
+#
+#
+# f1 = outer1(5)
+# print(f1(10))
+#
+# outer2 = lambda n: lambda x: n + x
+#
+# f2 = outer2(5)
+# print(f2(10))
+
+# print((lambda n: lambda x: n + x)(5)(10))
+
+
+# print((lambda n: lambda x: lambda y: n + x + y)(2)(4)(6))
+# print((lambda n: lambda x: lambda y: n+x+y)(int(input("Введите 1 число: ")))(int(input("Введите 2 число: ")))
+# (int(input("Введите 3 число: "))))
+
+
+# def func(i):
+#     return i[1]
+#
+#
+# d = {"b": 15, "a": 7, "c": 3}
+# print(d)
+# lst = list(d.items())
+# print(lst)
+# lst.sort(key=lambda i: i[1])
+# # lst.sort(key=func)
+# print(lst)
+# print(dict(lst))
+
+
+# def outer(a, b, c):
+#     def inner(i, j):
+#         return i * j
+#
+#     s = 2 * (inner(a, b) + inner(a, c) + inner(b, c))
+#     return s
+#
+#
+# print(outer(2, 4, 6))
+# print(outer(5, 8, 2))
+# print(outer(1, 6, 8))
+
+# s = 0
+#
+#
+# def outer(a, b, c):
+#     def inner(i, j):
+#         return i * j
+#
+#     global s
+#     s = 2 * (inner(a, b) + inner(a, c) + inner(b, c))
+#     return s
+#
+#
+# print(s)
+# outer(2, 4, 6)
+# print(s)
+# outer(5, 8, 2)
+# print(s)
+# outer(1, 6, 8)
+# print(s)
+
+
+# def outer(a, b, c):  # 2, 4, 6
+#     s = 0  # 44
+#
+#     def inner(i, j):
+#         nonlocal s
+#         s = s + i * j  # s += i * j   # s = 20 + 24 = 44
+#
+#     inner(a, b)  # 2, 4
+#     inner(a, c)  # 2, 6
+#     inner(b, c)  # 4, 6
+#     return 2 * s  # 2 * 44
+#
+#
+# print(outer(2, 4, 6))
+# print(outer(5, 8, 2))
+# print(outer(1, 6, 8))
+
+
+# players = [
+#     {'name': 'Антон', 'last_name': 'Бирюков', 'rating': 9},
+#     {'name': 'Алексей', 'last_name': 'Бодня', 'rating': 10},
+#     {'name': 'Федор', 'last_name': 'Сидоров', 'rating': 4},
+#     {'name': 'Михаил', 'last_name': 'Семенов', 'rating': 6},
+# ]
+#
+# res1 = sorted(players, key=lambda item: item['last_name'])
+# print(res1)
+# res2 = sorted(players, key=lambda item: item['rating'])
+# print(res2)
+# res3 = sorted(players, reverse=True, key=lambda item: item['rating'])
+# print(res3)
+
+# a = [lambda x, y: x + y, lambda x, y: x - y, lambda x, y: x * y]
+# b = a[0](5, 3)
+# print(b)
+
+
+# d = {
+#     1: lambda: print("Понедельник"),
+#     2: lambda: print("Вторник"),
+#     3: lambda: print("Среда"),
+#     4: lambda: print("Четверг"),
+# }
+#
+# d[3]()
+
+# print((lambda a, b: a if a > b else b)(5, 13))
+
+
+# print((lambda a, b, c: a if (a < b) and ((b < c) or (b > c)) else b if b < c else c)(12, 15, 6))
+
+
+# print((lambda a, b, c: a if (a < b) and (a < c) else b if (b < c) and (b < a) else c if (c < a) and (
+#             c < b) else "Ну тут уже всё:)")(22, 35, 16))
+# print((lambda a, b, c: a if (a < b) and (a < c) else b if (b < c) and (b < a) else c)(12, 36, 15))
+#
+# print((lambda a, b, c: a if min(a, b, c) == a else b if min(a, b, c) == b else c if min(a, b,
+
+#  c) == c else "Несколько равных")(
+#     11, 2, 111))
+#
+# print((lambda *args: min(args))(12, 5, 6))
+# print((lambda *args: sorted(args)[0])(2, 5, 6))
+# print((lambda *args: sorted(args)[-1])(2, 5, 6))
+
+# map(func, iterable), filter(func, iterable)
+
+# def mult(t):
+#     return t * 2
+#
+#
+# lst = [2, 8, 12, -5, -10]
+#
+# lt = list(map(mult, lst))
+# print(lt)
+#
+# lt1 = list(map(lambda t: t * 2, lst))
+# print(lt1)
+#
+# print(list(map(lambda t: t * 2, [2, 8, 12, -5, -10])))
+
+# lst = ['1', '2', '3', '4', '5']
+# print(lst)
+# print(list(map(lambda x: int(x), lst)))
+# print([int(i) for i in lst])
+# print(list(map(int, lst)))
+
+# st = ['a', 'b', 'c', 'd', 'e']
+# num = [1, 2, 3, 4, 5]
+# print(list(map(lambda x, y: {x: y}, st, num)))
+
+# st = [9, 2, 7, 6, 5]
+# num = [1, 2, 3, 4, 5]
+# print(list(map(lambda x, y: x + y, st, num)))
+
+# t = ('abcd', 'abc', 'cdefg', 'def', 'gth', '', False)  # 'abcdabcdabcd'
+#
+# # t2 = list(filter(lambda s: len(s) == 3, t))
+# t2 = list(filter(lambda s: s, t))
+# print(t2)
+
+# b = [66, 90, 68, 59, 76, 60, 88, 74, 81, 65]
+# print(list(filter(lambda s: s > 75, b)))
+
+# от 1 до 40
+
+# from random import randint
+#
+# arr = [randint(1, 40) for i in range(10)]
+# print(arr)
+# # print(list(filter(lambda a: (a >= 10) and a <= 20, arr)))
+# print(list(filter(lambda a: 10 <= a <= 20, arr)))
+
+# Вывести на экран квадраты нечетных чисел от 1 до 10
+# print(list(map(lambda x: x ** 2, filter(lambda x: x % 2, range(1, 10)))))
+# print([x ** 2 for x in range(1, 10) if x % 2])
+
+
+# Декораторы
+
+# def hello():
+#     return 'Hello, I am func "hello"'  # 3
+#
+#
+# def super_func(func):  # (def hello(): return 'Hello, I am func "hello"')
+#     print('Hello, I am func "super_func"')  # 2
+#     print(func())  # 4
+#
+#
+# super_func(hello)  # 1
+
+
+# def hello():
+#     return 'Hello, I am func "hello"'
+#
+#
+# test = hello
+# print(id(test))
+# print(id(hello))
+# print(test())
+
+# def my_decorator(func):
+#     def inner():
+#         print('Code before')
+#         func()
+#         print('Code after')
+#     return inner
+#
+#
+# def func_test():
+#     print('Hello, I am func "func_test"')
+#
+#
+# test = my_decorator(func_test)
+# test()
+# print(list(map(lambda x: x ** 2, filter(lambda x: x % 2, range(1, 10)))))
+
+# def my_decorator(func):  # декорирующая функция
+#     def inner():
+#         print('*' * 40)
+#         func()
+#         print('-' * 40)
+#     return inner
+#
+#
+# @my_decorator  # декоратор
+# def func_test():  # декорируемая функция
+#     print('Hello, I am func "func_test"')
+#
+#
+# @my_decorator
+# def hello():
+#     print('Hello, I am func "hello"')
+#
+#
+# func_test()
+# hello()
+
+# def bold(fn):
+#     def wrap():
+#         return "<b>" + fn() + "</b>"
+#
+#     return wrap
+#
+#
+# def italic(fn):
+#     def wrap():
+#         return "<i>" + fn() + "</i>"
+#
+#     return wrap
+#
+#
+# @bold
+# @italic
+# def hello():
+#     return "text"
+#
+#
+# print(hello())
+
+
+# def cnt(fn):
+#     count = 0
+#
+#     def wrap():
+#         nonlocal count
+#         count += 1
+#         fn()
+#         print("Вызов функции:", count)
+#
+#     return wrap
+#
+#
+# @cnt
+# def hello():
+#     print("Hello")
+#
+#
+# hello()
+# hello()
+# hello()
+
+# def args_decorator(fn):
+#     def wrap(arg1, arg2):
+#         print("Данные:", arg1, arg2)
+#         fn(arg1, arg2)
+#
+#     return wrap
+#
+#
+# @args_decorator
+# def print_full_name(first, last):
+#     print("Меня зовут", first, last)
+#
+#
+# print_full_name("Ирина", "Мумладзе")
+
+
+# def args_decorator(fn):
+#     def wrap(*args, **kwargs):
+#         print("args:", args)
+#         print("kwargs:", kwargs)
+#         fn(*args, **kwargs)
+#
+#     return wrap
+#
+#
+# @args_decorator
+# def func(a, b, c, study="Python"):
+#     print(a, b, c, "изучают", study, end="\n\n")
+#
+#
+# @args_decorator
+# def func1(study):
+#     print("Мне нравится", study)
+#
+#
+# func("Борис", "Елизавета", "Светлана", study="JavaScript")
+# func("Владимир", "Екатерина", "Виктор")
+# func1(study="HTML")
+
+# def decor_args(arg1, arg2):
+#     def decor(fn):
+#         def wrap(x, y):
+#             print(arg1, x, arg2, y, "=", end=" ")
+#             fn(x, y)
+#
+#         return wrap
+#     return decor
+#
+#
+# @decor_args("Сумма:", "+")
+# def summa(a, b):
+#     print(a + b)
+#
+#
+# @decor_args("Разность:", "-")
+# def sub(a, b):
+#     print(a - b)
+#
+#
+# summa(5, 2)
+# sub(5, 2)
+
+
+# def decor_args(arg1):
+#     def decor(fn):
+#         def wrap(x):
+#             return arg1 * fn(x)  # 3 * 5
+#
+#         return wrap
+#
+#     return decor
+#
+#
+# @decor_args(3)
+# def return_num(num):
+#     return num
+#
+#
+# print(return_num(5))
+
+
+# Строки
+
+# print(int("19"))
+# print(int("19.5"))
+# print(int(19.5))
+
+# print(int("100", 2))
+# print(int("100", 8))
+# print(int("100", 10))
+# print(int("100", 16))
+
+
+# print(bin(18))  # 0b10010 - двоичная
+# print(oct(18))  # 0o22 - восьмеричная
+# print(hex(18))  # 0x12 - шестнадцатеричная
+#
+# print(0b10010)
+# print(0o22)
+# print(0x12)
+# print(0b10010 + 0x12)
+
+
+# q = 'Pyt'
+# w = "hon"
+# e = q + w
+# print(e)
+# print(e * 2)
+# print("y1" in e)
+# print(e[0])
+# print(e[1:3])
+
+# s = "Python"  # Pytton
+# # s[3] = "t"
+# s = s[:3] + 't' + s[4:]
+# print(s)
+
+# def change_char_to_str(s, old, new):
+#     s2 = ""
+#     i = 0
+#
+#     while i < len(s):
+#         if s[i] == old:
+#             s2 = s2 + new
+#         else:
+#             s2 = s2 + s[i]
+#         i += 1
+#
+#     return s2
+#
+#
+# str1 = "Я изучаю Nython. Мне нравится Nython. Nython очень интересный язык программирования."
+# str2 = change_char_to_str(str1, "N", "P")
+# print("str1 =", str1)
+# print("str2 =", str2)
+
+# print("Привет")
+# print(u"Привет")
+
+# print("C:\\folder\\fil\nes.txt\\")
+# print(r"C:\folder\files\\"[:-1])
+# print(r"C:\folder\files" + "\\")
+
+# name = "Дмитрий"
+# age = 25
+# print("Меня зовут " + name + ". Мне " + str(age) + " лет.")
+# print(f"Меня зовут {name}. Мне {age} лет.")
+
+# ch = 5.26987412
+#
+# print(f"Число: {round(ch, 3)}")
+# print(f"Число: {ch:.3f}")
+
+# x = 10
+# y = 5
+# print(f"{x = }, {y = }")
+# print(f"{x} x {y} / 2 = {x * y / 2}")
+
+# num = 74
+#
+# print(f"{{{{{num}}}}}")
+#
+# print("C:\\\\text")
+
+# dir_name = 'my_doc'
+# file_name = "data.txt"
+# print(fr"home\{dir_name}\{file_name}")
+# print("home\\" + dir_name + "\\" + file_name)
+
+
+###########################################################################
+# def avg(fn):
+#     def wrap(*arg):
+#         a = ""
+#         for i in arg:
+#             a += str(i) + ", "  # "2, 3, 3, 4, "
+#         print("Среднее арифметическое:", a[:-2], "=", fn(*arg) / len(arg))
+#
+#     return wrap
+#
+#
+# @avg
+# def summa(*args):  # (2, 3, 3, 4)
+#     print("Сумма чисел:", ", ".join(map(str, args)), "=", sum(args))
+#     return sum(args)
+#
+#
+# summa(2, 3, 3, 4)
+###########################################################################
+
+# s = """
+# Несколько
+# строк
+# """
+# # print(s)
+#
+# s1 = '''
+# Несколько
+# строк
+# '''
+# print(s1)
+#
+# "Несколько строк"
+# print(s2)
+
+
+# def square(n):
+#     """Принимает число n, возвращает квадрат числа n."""
+#     print()
+#     return n ** 2
+#
+#
+# print(square(5))
+# print(square.__doc__)
+# # max(5, 5)
+# # len()
+# print(len.__doc__)
+
+
+# from math import pi
+#
+#
+# def cylinder(r, h):
+#     """
+#     Вычисляет площадь цилиндра.
+#
+#     Вычисляет площадь цилиндра на основании заданной высоты и радиуса основания
+#
+#     :param r: положительное число, радиус основания цилиндра
+#     :param h: положительное число, высота цилиндра
+#     :return: положительное число, площадь цилиндра
+#     """
+#     return 2 * pi * r * (r + h)
+#
+#
+# print(cylinder(2, 4))
+# print(cylinder.__doc__)
+# print(max.__doc__)
+# print(dict.__doc__)
+
+# print(ord('a'))
+# print(ord('#'))
+# print(ord('й'))
+
+# while True:
+#     n = input("-> ")
+#     if n != "-1":
+#         print(ord(n))
+#     else:
+#         break
+
+# s = "Test string for me"
+# arr = [ord(x) for x in s]
+# print("ASCII коды:", arr)
+# arr = [int(sum(arr) / len(arr))] + arr
+# print("Среднее арифметическое:", arr)
+# arr += [ord(x) for x in input("-> ")[:3] if ord(x) not in arr]
+# print(arr)
+# print(arr.count(arr[-1]) - 1)
+# arr.sort(reverse=True)
+# print(arr)
+
+
+# print(chr(97))
+# print(chr(8364))
+
+# a = 97
+# b = 122
+#
+# if a < b:
+#     a, b = b, a
+#
+# for i in range(b, a + 1):
+#     print(chr(i), end=" ")
+
+# print("apple" == "Apple")
+# print("apple" > "Apple")  # 97 > 65
+
+
+# from random import randint
+#
+# shortest = 7
+# longest = 16
+# min_ascii = 33
+# max_ascii = 126
+#
+#
+# def random_password():
+#     res = ""
+#     for i in range(randint(shortest, longest)):  # range(10)
+#         rand_char = chr(randint(min_ascii, max_ascii))
+#         res += rand_char
+#     return res
+#
+#
+# print("Ваш случайный пароль:", random_password())
+
+
+# s = "hello, WORLD! I am learning Python."
+# # print(s.capitalize())  # Hello, world! i am learning python.
+# # print(s.lower())  # hello, world! i am learning python.
+# # print(s.upper())  # HELLO, WORLD! I AM LEARNING PYTHON.
+# # # print(s.swapcase())  # HELLO, world! i AM LEARNING pYTHON.
+# # # print(s.title())  # Hello, World! I Am Learning Python.
+# # print(s)
+#
+# # print(s.count("l"))
+# # print(s.count("l", 3))
+# # print(s.count("l", 3, 10))
+#
+# # print(s.find("Python1"))  # возвращает индекс первого вхождения подстроки в строку, если такой подстроки нет
+# # # возвращает "-1"
+# # # print(s.find("l", 4, 20))
+# # print(s.find("l"))
+# # print(s.rfind("l"))
+# #
+# # print(s.index("l"))  # ValueError
+# # print(s.rindex("l"))
+#
+#
+# # st = input("Введите два слова через пробел: ")
+# # first = st[:st.find(" ")]
+# # second = st[st.find(" ") + 1:]
+# # print(second + " " + first)
+# print(s.startswith("I am", 14))
+# print(s.index("I am"))
+# print(s.endswith("on."))
+
+
+# print(int("789"))
+
+# print('123'.isdigit())  # только числа
+# print('qЙwee'.isalpha())  # только буквы
+#
+# print('Abc123'.isalnum())  # только буквы или цифры
+#
+# print('aИc0123"№'.islower())  # только нижний регистр
+# print('ASD0123"№'.isupper())  # только верхний регистр
+
+# n = input("Введите число: ")
+# if n.isdigit():
+#     n = int(n)
+#     print(n * 2)
+
+
+# print('py'.center(10))
+# print(' py '.center(11, "-"))
+
+
+# print('    py    '.lstrip())
+# print('    py    '.rstrip())
+# print('    p y    '.strip())
+#
+# print('https://www.pythons.org'.strip('/:pths.org'))
+# print('https://www.pythons.org'.lstrip('/:pths').rstrip('.org'))
+
+
+# str1 = "Я изучаю Nython. Мне нравится Nython. Nython очень интересный язык программирования. New"
+# print(str1.replace("Nython", "Python"))
+# print(str1.replace("N", "P"))
+
+
+# s = "-"
+# seq = ("a", "b", "c")
+# print(s.join(seq))
+#
+# print("..".join(['1', '99']))
+#
+# print(", ".join("Hello"))
+
+# print("Строка разделенная пробелами".split())  # ['Строка', 'разделенная', 'пробелами']
+# print('www.python.org.ru'.split(".", 2))
+# print('www.python.org.ru'.rsplit(".", 2))
+
+a = input("-> ").split()
+b = list(map(int, a))
+print(b)
