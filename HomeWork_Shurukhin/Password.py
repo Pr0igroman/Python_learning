@@ -1,7 +1,7 @@
 import re
 
 #reg = r"^[0-9a-zA-Z@_-]{6,18}$"
-reg = r"^[\w@-]{6,18}$"
+reg = r"^[\w+@-]{6,18}$"
 
 password1 = "my-p@ssw0rd"
 password2 = "eerge"
