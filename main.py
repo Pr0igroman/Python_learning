@@ -2561,7 +2561,7 @@
 #
 # test = my_decorator(func_test)
 # test()
-# print(list(map(lambda x: x ** 2, filter(lambda x: x % 2, range(1, 10)))))
+
 
 # def my_decorator(func):  # декорирующая функция
 #     def inner():
@@ -3002,6 +3002,2035 @@
 # print('www.python.org.ru'.split(".", 2))
 # print('www.python.org.ru'.rsplit(".", 2))
 
-a = input("-> ").split()
-b = list(map(int, a))
-print(b)
+# a = input("-> ").split()
+# b = list(map(int, a))
+# print(b)
+
+# fio = input("Введите ФИО: ").split()
+# print(fio)
+# print(f"{fio[0]} {fio[1][0]}.{fio[2][0]}.")
+
+# Регулярные выражения
+import math
+import re
+
+
+# s = "Я ищу совпадение в 2024 году. И я их найду в 2 счёта."
+# reg = "а"
+
+# print(re.findall(reg, s))  # возвращает список содержащий все совпадения
+#
+# print(re.search(reg, s))  # месторасположение первого совпадения с объектом
+# # print(re.search(reg, s).span())
+# # print(re.search(reg, s).start())
+# # print(re.search(reg, s).end())
+# # print(re.search(reg, s).group())
+#
+# print(re.match(reg, s))  # поиск совпадения с шаблоном вначале строки
+#
+# print(re.split(reg, s, 1))  # возвращает список, в котором строка разбита по шаблону
+#
+# print(re.sub(reg, "!", s, 2))  # поиск и замена
+
+# s = "Я ищу совпадение в 2024 году. И я их [найду] в 2 счё-та. 198673 Hello"
+# reg = "[21][0-9][0-9][0-9]"
+# reg = "[А-яЁё]"
+# reg = "[A-Za-z]"
+# reg = r"\."
+# reg = r"[A-Za-z\[\]-]"
+# reg = r"[^0-9]"
+# reg = r"[^А-яЁёA-Za-z0-9]"
+# print(re.findall(reg, s))
+
+# print(ord('Я'))
+# print(ord('а'))
+
+
+# st = "Час в 24 формате от 00 до 23. 2021-06-15T19 : 30. Минуты, в диапазоне от 00 до 59. 2021-06-15T01 : 09."
+# pattern = r"[0-2][0-9]\s:\s[0-5][0-9]"
+# print(re.findall(pattern, st))
+
+
+# s = "Я ищу совпадение в 2024 году. И я их [найду] в 2 счё-та. 198673 Hel_lo 20000000000000000000000000"
+# reg = r"[20]*"
+# print(re.findall(reg, s))
+
+# Кол-во повторений
+# + - от 1 до бесконечности
+# * - от 0 до бесконечности
+# ? - от 0 до 1
+
+# d = "Цифры: 7, +17, --42, 0013, 0.3"
+# reg = r'[+-]?[\d.]+'
+# print(re.findall(reg, d))
+
+
+# s = "05-03-1987 # Дата рождения"
+# print("Дата рождения:", re.sub(r"\s#.*", "", s))
+# print(re.sub('-', '.', s))
+# print("Дата рождения:", re.sub('-', '.', re.sub(r"\s#.*", "", s)))
+# # print("Дата рождения:", "05.03.1987")
+# # Дата рождения: 05.03.1987
+# print("Дата рождения", re.sub("-", ".", re.sub("\\s#.*", "", s)))
+
+# s = "author=Пушкин А.С.; title  = Евгений Онегин; price =200; year= 1831"
+# reg = r'\w+\s*=\s*[^;]+'
+# # reg = r'[^;]+'
+# print(re.findall(reg, s))
+
+# s = "12 сентября 2024 года 568789456"
+# reg = r"\d{2,4}"
+# print(re.findall(reg, s))
+
+
+# s = "Я ищу совпадение в 2024 году. И я их [найду] в 2 счё_та."
+# # reg = r"^\w+\s\w+"
+# reg = r"\w+\.$"
+# print(re.findall(reg, s))
+
+# def validate_login(login):
+#     return re.findall(r"^[A-Za-z0-9-]{3,16}$", login)
+#
+#
+# print(validate_login("Python-master"))
+
+#
+
+# s = "+7 499 456-45-78, +74994564578, 7 (499) 4564578, 74994564578, +24994564578"
+#
+# reg = r"\+?7\d{10}"
+# print(re.findall(reg, s))
+
+# print(re.findall(r"\w+", "12 + й"))
+# print(re.findall(r"\w+", "12 + й", flags=re.ASCII))
+
+# text = "Hello world"
+# print(re.findall(r"\w\+", text, re.DEBUG))
+
+# s = "Я ищу совпадение в 2024 году. И я их найду в 2 счёта."
+# reg = "я"
+#
+# print(re.findall(reg, s, re.IGNORECASE))
+# print(re.findall(reg, s, re.I))
+
+# text = """
+# one
+# two
+# """
+
+# print(re.findall(r"one.\w+", text))
+# print(re.findall(r"one.\w+", text, re.DOTALL))
+# print(re.findall(r"one$", text))
+# print(re.findall(r"one$", text, re.MULTILINE))
+
+# print(re.findall('''
+# [A-Za-z0-9._-] +   # part 1
+# @                  # @
+# [A-Za-z.-]+        # part 2
+# ''', 'test@mail.ru', re.VERBOSE))
+
+# text = """Python,
+# python,
+# PYTHON"""
+#
+# reg = "(?mi)^python"
+# print(re.findall(reg, text))
+
+# text = "<body>Пример жадного соответствия регулярных выражений</body>"
+# print(re.findall("<.*?>", text))
+
+# +?, *?, ??
+# {m,n}?, {,n}?, {m,}?
+
+# s = "12 сентября 2024 года 568789456"
+# reg = r"\d{2,4}?"
+# print(re.findall(reg, s))
+
+# s = "Ольга и Виталий отлично учатся!"
+# reg = "Петр|Ольга|Виталий"
+# print(re.findall(reg, s))
+
+# s = "int = 4, float = 4.0f, double = 8.0, float"
+# reg = r"\w+\s*=\s*\d[.\w]*"
+# reg = r"int\s*=\s*\d[.\w]*|float\s*=\s*\d[.\w]*"
+# reg = r"(?:int|float)\s*=\s*\d[.\w]*"
+# reg = r"(int|float)\s*=\s*\d[.\w]*"
+# print(re.findall(reg, s))
+# print(re.search(reg, s))
+
+# (?: ....) - группирующая скобка не является сохраняющей
+
+# s = "5 + 7*2 - 4"
+# reg = r"\s*([+*-])\s*"
+# print(re.split(reg, s))
+
+# s = "01-12-2024"
+# reg = "(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19[0-9][0-9]|20[0-9][0-9])"
+# # print(re.findall(reg, s))
+# # print(re.search(reg, s).group())
+# # m = re.search(reg, s)
+# # print(m[0])
+# # print(m[1])
+# # print(m[2])
+# # print(m[3])
+# print(re.search(reg, s).group())
+# print(re.search(reg, s).group(1))
+# print(re.search(reg, s).group(2))
+# print(re.search(reg, s).group(3))
+
+# text = """
+# Самара
+# Москва
+# Тверь
+# Цфа
+# Казань
+# """
+# count = 0
+#
+#
+# def replace_find(m):
+#     global count
+#     count += 1
+#     return f"<option value='{count}'>{m.group(1)}</option>\n"
+#
+#
+# print(re.sub(r"\s*(\w+)\s*", replace_find, text))
+
+# s = "Самолет прилетает 10/23/2024. Будем рады вас видеть после 10/24/2024."  # 23.10.2024  24.10.2024
+# reg = r"(\d{2})/(\d{2})/(\d{4})"
+# print(re.sub(reg, r"\2.\1.\3", s))
+
+# s = "yandex.com and yandex.ru"
+# reg = r"([a-z0-9-]{2,}\.[a-z]{2,4})"
+# print(re.sub(reg, r"http://\1", s))  #
+
+
+# Рекурсия
+
+# def elevator(n):  # 0
+#     if n == 0:  # базовый случай
+#         print("Вы в подвале")
+#         return
+#     print("=>", n)  # 1
+#     elevator(n - 1)  # 5 4 3 2 1
+#     print(n, end=" ")
+#
+#
+# n1 = int(input("На каком вы этаже: "))
+# elevator(n1)
+
+
+# def sum_list(lst):
+#     res = 0
+#     for i in lst:
+#         res += i
+#     return res
+
+# def sum_list(lst):  # [9]
+#     if len(lst) == 1:
+#         print(lst, "=> lst[0]:", lst[0])
+#         return lst[0]  # 9
+#     else:
+#         print(lst, "=> lst[0]:", lst[0])
+#         return lst[0] + sum_list(lst[1:])  # 1 + 3 + 5 + 7 +
+#
+#
+# print(sum_list([1, 3, 5, 7, 9]))  # 25
+
+# def to_str(n, base):  # 2, 10
+#     convert = "0123456789ABCDEF"
+#     if n < base:
+#         return convert[n]  # convert[15] = 'F'
+#     else:
+#         return to_str(n // base, base) + convert[n % base]  # convert[14] = 'E'
+#
+#
+# print(to_str(254, 10))  # to_str(254, 16) => FE
+
+
+# names = ["Adam", ["Bob", ["Chet", "Cat", ["1", ["2", ["3"]]]], "Bard", "Bert"], "Alex", ["Bea", "Bill"], "Ann"]
+#
+#
+# # print(names[0])
+# # print(isinstance(names[0], list))
+# # print(names[1])
+# # print(isinstance(names[1], list))
+# # print(names[1][1])
+# # print(isinstance(names[1][1], list))
+# def count_items(item_list):
+#     count = 0  # 10
+#     for item in item_list:
+#         if isinstance(item, list):
+#             count += count_items(item)  # count += 2
+#         else:
+#             count += 1
+#     return count
+#
+#
+# print(count_items(names))
+
+# def remove(text):  # ""
+#     if not text:  # text = ""
+#         return ""
+#     if text[0] == "\n" or text[0] == " ":
+#         return remove(text[1:])  # ""
+#     else:
+#         return text[0] + remove(text[1:])  # "HelloWorld" + ""
+#
+#
+# print(remove("  Hello\nWorld "))
+
+
+# Файлы
+
+# f = open("test.txt", "r")
+# print(f)
+# print(*f)
+# print(f.mode)
+# print(f.name)
+# print(f.encoding)
+# f.close()
+# print(f.closed)
+
+
+# f = open("test.txt", "r")
+# # f = open(r"D:\Python317\317\test.txt", "r")
+# print(f.read(3))
+# print(f.read())  # возвращает весь документ
+# f.close()
+
+
+# f = open("test2.txt", "r")
+# print(f.readline())  # возвращает одну строку
+# print(f.readline(8))
+# print(f.readline())
+# print(f.readline())
+# f.close()
+
+
+# f = open("test2.txt", "r")
+# print(f.readlines(16))
+# print(f.readlines())  # возвращает список строк
+# f.close()
+
+# f = open("test2.txt", "r")
+# count = 0
+# for line in f:
+#     print(line, end="")
+#     count += 1
+# f.close()
+# print(count)
+
+# f = open("test2.txt", "r")
+# print(len(f.readlines()))
+# f.close()
+
+# f = open("xyz.txt", "w")
+# f.write("Hello\nWorld!\n")
+# f.close()
+
+
+# f = open("xyz.txt", "a")
+# f.write("New text.\n")
+# f.close()
+
+
+# f = open("xyz.txt", "a")
+# lines = ['\nThis is line 1', '\nThis is line 2']
+# f.writelines(lines)
+# f.close()
+
+# f = open("xyz.txt", "w")
+# lst = [str(i) + " " for i in range(1, 20)]
+# print(lst)
+# # for index in lst:
+# #     f.write(index + "\t")
+# f.writelines(lst)
+# f.close()
+
+
+# f = open("test3.txt", "w")
+# f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл\n")
+# f.close()
+
+# f = open('test3.txt', 'r')
+# read_file = f.readlines()
+# print(read_file)
+# read_file[1] = "Hello world!\n"
+# print(read_file)
+# f.close()
+#
+# f = open("test3.txt", "w")
+# f.writelines(read_file)
+# f.close()
+
+
+# f = open("test3.txt", "w")
+# f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл\n")
+# f.close()
+
+# f = open("test3.txt", 'r')
+# read_file = f.readlines()
+# pos = int(input("Введите индекс строки для удаления: "))
+# if 0 <= pos < len(read_file):
+#     del_pos = read_file.pop(pos)
+# else:
+#     print("Индекс введен неверно")
+# f.close()
+#
+# f = open("test3.txt", 'w')
+# f.writelines(read_file)
+# f.close()
+
+
+# f = open("test.txt", "r")
+# print(f.read(3))
+# print(f.tell())  # возвращает текущую позицию условного курсора в файле
+# print(f.seek(1))  # перемещает условный курсор в заданную позицию
+# print(f.read())
+# print(f.tell())
+# f.close()
+
+# f = open("test.txt", "r+")
+# print(f.write("I am learning Python"))
+# print(f.seek(3))
+# print(f.write("-new string-"))
+# print(f.tell())
+# f.close()
+
+# f = open("test2.txt", "a+")
+# # print(f.write("1111 I am learning Python 1111"))
+# print(f.read())
+# f.close()
+
+# with open("test2.txt", 'w+') as f:
+#     print(f.write('01234\n56789'))
+# print(f.closed)
+
+
+# with open("test2.txt", 'r') as f:
+#     for line in f:
+#         print(line[:3])
+
+# def negative_numbers(n):  # n = []
+#     if not n:
+#         return 0
+#     count = 0  # 0
+#     if n[0] < 0:
+#         count += 1
+#     return negative_numbers(n[1:]) + count  # 1 + 0 + 0 + 1 + 1 + 0 + 0
+#
+#
+# lst = [-2, 3, 8, -11, -4, 6]
+# print(negative_numbers(lst))
+
+# file_name = "res.txt"
+# lst = [4.5, 2.8, 3.9, 1.0, 0.3, 4.33, 7.777]
+#
+#
+# def get_line(lt):
+#     lt = map(str, lt)  # ['4.5', '2.8', '3.9', '1.0', '0.3', '4.33', '7.777']
+#     return ' '.join(lt)  # "4.5 2.8 3.9 1.0 0.3 4.33 7.777"
+#
+#
+# with open(file_name, 'w') as f:
+#     f.write(get_line(lst))
+# #     # f.write(str(lst))  # "4.5 2.8 3.9 1.0 0.3 4.33 7.777"
+#
+#
+# with open(file_name, 'r') as f:
+#     st = f.read()
+#
+# print(st)
+# print(type(st))
+#
+# nums = list(map(float, st.split()))
+# print(nums)
+# print(type(nums[0]))
+
+# a = 5
+
+
+# if a == 5:
+#     b = 10
+
+# for i in range(12):
+#     b = 10
+
+# def func():
+#     b = 10
+#
+#
+# func()
+# print(b)
+
+# def longest_worlds(file):
+#     with open(file, 'r') as text:  # encoding="utf-8"
+#         w = text.read().split()
+#         print(w)
+#         max_length = len(max(w, key=len))
+#         print(max_length)
+#         res = [i for i in w if len(i) == max_length]
+#         if len(res) == 1:
+#             return res[0]
+#         return res
+#
+#
+# print(longest_worlds('test.txt'))
+
+
+# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока №4\nСтрока №5\nСтрока №6\nСтрока №7\n
+# Строка №8\nСтрока №9\nСтрока №10\n"
+#
+# with open('one.txt', 'w') as f:
+#     f.write(text)
+
+
+# with open('one.txt', 'r') as fr, open('two.txt', 'w') as fw:
+#     for line in fr:
+#         line = line.replace("Строка", "Линия -")
+#         fw.write(line)
+
+
+# Модуль OS, OS.PATH
+
+# import os
+
+# import os.path
+
+# print(os.getcwd())  # возвращает текущую директорию
+# print(os.listdir())  # список директорий и файлов
+# print(os.listdir(".."))
+
+# os.mkdir("folder1")  # создает папку
+# os.makedirs("nested1/nested2/nested3")  # создает конечную директорию вмести с промежуточными
+
+# os.rmdir("folder1")  # удаление пустой папки
+# os.rmdir("nested1/nested2/nested3")
+
+# os.remove("xyz1.txt")  # удаление файла
+
+# os.rename("xyz.txt", "new.txt")  # переименование файла и папки
+# os.rename("folder", "new")
+
+# os.rename("two.txt", "nested1/two1.txt")
+# os.renames("test.txt", "nested1/nested3/two.txt")  # переименование файла и папки, перемещает документы,
+# создавая промежуточные директории
+
+
+# for root, dirs, files in os.walk("nested1", topdown=False):
+#     print("Root:", root)
+#     print("\tSubdirs:", dirs)
+#     print("\t\tFiles:", files)
+
+
+# def remove_empty_dirs(root_tree):
+#     print(f"Удаление пустых директорий в ветви {root_tree}")
+#     print('-' * 50)
+#     for root, dirs, files in os.walk(root_tree):
+#         if not os.listdir(root):
+#             os.rmdir(root)
+#             print(f"Директория {root} удалена.")
+#     print('-' * 50)
+#
+#
+# remove_empty_dirs("nested1")
+
+# print(os.path.split(r"D:\Python317\317\nested1\nested2\nested4\text.txt"))  # [1]
+#
+# print(os.path.join('nested4', r'D:\Python317', '317', 'nested1', 'nested2', 'text.txt'))
+
+# dirs = [r'Work\F1', r'Work\F2\F21']
+# for d in dirs:
+#     os.makedirs(d)
+
+# files = {
+#     'Work': ['w.txt'],
+#     r'Work\F1': ['f11.txt', 'f12.txt', 'f13.txt'],
+#     r'Work\F2\F21': ['f211.txt', 'f212.txt']
+# }
+#
+# for dir1, files in files.items():
+#     for file in files:
+#         file_path = os.path.join(dir1, file)
+#         open(file_path, 'w').close()
+#
+# file_with_text = [r'Work\w.txt', r'Work\F1\f12.txt', r'Work\F2\F21\f211.txt', r'Work\F2\F21\f212.txt']
+#
+# for file in file_with_text:
+#     with open(file, 'w') as f:
+#         f.write(f"Текст в файле {file}")
+
+# Work\w.txt
+# Work\F1\f11.txt
+# Work\F1\f12.txt
+# Work\F1\f13.txt
+# Work\F2\F21\f211.txt
+# Work\F2\F21\f212.txt
+
+
+# root = r'nested1\nested2'
+# objs = os.listdir(root)
+# print(objs)
+# objs = list(map(lambda i: os.path.join(root, i), objs))
+# # print(objs)
+#
+# # obj_sort = sorted(objs, key=os.path.isfile, reverse=True)
+# # print(obj_sort)
+# #
+# print(sorted(objs, reverse=True))
+
+# print(os.path.isfile(r"nested1\nested2\res.txt"))  # возвращает True, если путь является файлом
+# print(os.path.isdir(r"nested1\nested2"))  # возвращает True, если путь является директорией
+
+
+# print(os.path.exists(r'nested1\nested2'))  # проверка на существование пути
+# print(os.path.getsize(r'nested1\nested2'))  # размер документа в байтах
+#
+# root = r'nested1\nested2'
+# if os.path.exists(root):
+#     print(os.path.getsize(root))
+
+# b = os.path.getsize(r'main.py')
+# print(b, "байт")
+# print(b // 1024, "килобайт")
+
+# import time
+#
+# path = "main.py"
+# print(os.path.getctime(path))  # возвращает время создания файла
+# print(os.path.getatime(path))  # возвращает время последнего доступа к файлу
+# print(os.path.getmtime(path))  # возвращает время последнего изменения файла (в секундах)
+#
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(os.path.getctime(path))))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(os.path.getatime(path))))
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(os.path.getmtime(path))))
+
+
+# class Point:
+#     """Класс для предоставления координат на плоскости"""
+#     x = 1
+#     y = 1
+#
+#
+# p1 = Point()
+# print(p1.x)
+# print(type(p1))
+# print(Point.__doc__)
+# print(Point.__name__)
+# print(dir(Point))
+
+
+# class Point:
+#     x = 1
+#     y = 1
+#
+#
+# p1 = Point()
+# p1.x = 10
+# p1.y = 20
+# p1.z = 30
+# print(p1.x, p1.y, p1.z)
+# print(p1.__dict__)
+#
+# p2 = Point()
+# p2.x = 100
+# # p2.y = 200
+# print(p2.x, p2.y)
+# print(p2.__dict__)
+
+# print(id(Point))
+# print(id(p1))
+# print(id(p2))
+
+
+# class Point:
+#     x = 1
+#     y = 1
+#
+#     def set_coord(self, x, y):
+#         self.x = x
+#         self.y = y
+#         print(self.__dict__)
+#
+#
+# p1 = Point()
+# # p1.x = 5
+# # p1.y = 10
+# p1.set_coord(5, 10)
+# # Point.set_coord(p1)
+#
+# p2 = Point()
+# # p2.x = 50
+# # p2.y = 100
+# p2.set_coord(50, 100)
+# Point.set_coord(p2)
+
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phone = "00-00-00"
+#     country = "country"
+#     city = "city"
+#     address = "street, house"
+#
+#     def print_info(self):
+#         print(" Персональные данные ".center(40, "*"))
+#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\nНомер телефона: {self.phone}\nСтрана: "
+#               f"{self.country}\nГород: {self.city}\nДомашний адрес: {self.address}")
+#         print("=" * 40)
+#
+#     def input_info(self, first_name, birthday, phone, country, city, address):
+#         self.address = address
+#         self.birthday = birthday
+#         self.phone = phone
+#         self.name = first_name
+#         self.country = country
+#         self.city = city
+#
+#     def set_name(self, name):  # установить имя
+#         self.name = name
+#
+#     def get_name(self):  # получить имя
+#         return self.name
+#
+#     def set_birthday(self, birthday):
+#         self.birthday = birthday
+#
+#     def get_birthday(self):
+#         return self.birthday
+#
+#
+# h1 = Human()
+# h1.print_info()
+# h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 1A")
+# h1.print_info()
+# h1.set_name("Юлия")
+# print(h1.get_name())
+# h1.set_birthday("23.12.1990")
+# print(h1.get_birthday())
+# h1.print_info()
+
+# class Person:
+#     skill = 10  # статическое
+#     count = 0  # 2
+#
+#     def __init__(self, name, surname):  # Инициализатор
+#         self.name = name  # динамическое
+#         self.surname = surname
+#         print("Инициализатор")
+#         Person.count += 1
+#
+#     def __del__(self):  # финализатор (деструктор)
+#         print("Удаление экземпляра:", self.__class__.__name__)
+#
+#     def print_info(self):
+#         print("Данные сотрудника:", self.name, self.surname)
+#
+#     def add_skill(self, k):
+#         self.skill += k
+#         print("Квалификация сотрудника:", self.skill, end="\n\n")
+#
+#
+# p1 = Person("Виктор", "Резник")
+# p1.print_info()
+# p1.add_skill(3)
+# # del p1
+# # p1 = 5
+#
+# p2 = Person("Анна", "Долгих")
+# p2.print_info()
+# p2.add_skill(2)
+#
+# p3 = Person("Анна", "Долгих")
+# print(p1.count)
+# print(p2.count)
+# print(Person.count)
+
+# class Robot:
+#     k = 0  # 0
+#
+#     def __init__(self, name):
+#         self.name = name
+#         print("Инициализация робота:", self.name)
+#         Robot.k += 1
+#
+#     def __del__(self):
+#         print(self.name, "выключается!")
+#         Robot.k -= 1
+#
+#         if Robot.k == 0:
+#             print(self.name, "был последним")
+#         else:
+#             print("Работающих роботов осталось:", Robot.k)
+#
+#     def say_hi(self):
+#         print("Приветствую! Меня зовут:", self.name)
+#
+#
+# droid1 = Robot('R2-D2')
+# droid1.say_hi()
+# print("Численность роботов:", Robot.k)
+# droid2 = Robot('C-3PO')
+# droid2.say_hi()
+# print("Численность роботов:", Robot.k)
+# droid3 = Robot('P-2CO')
+# droid3.say_hi()
+# print("Численность роботов:", Robot.k)
+# print("\nЗдесь роботы могут проделать какую-то работу\n")
+# print("Роботы закончили свою работу. Давайте их выключим")
+# del droid1
+# del droid2
+# # del droid3
+# droid3 = 5
+# print("Численность роботов:", Robot.k)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x  # _Point__x
+#             self.__y = y  # _Point__y
+#
+#     def __check_value(a):  # _Point__check_value
+#         if isinstance(a, int) or isinstance(a, float):
+#             return True
+#         return False
+#
+#     def set_coord(self, x, y):
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_coord(self):
+#         return self.__x, self.__y
+#
+#     def set_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print("Координата X должны быть числом")
+#
+#     def set_y(self, y):
+#         if Point.__check_value(y):
+#             self.__y = y
+#         else:
+#             print("Координата Y должны быть числом")
+#
+#     def get_x(self):
+#         return self.__x
+#
+#     def get_y(self):
+#         return self.__y
+#
+#
+# p1 = Point(5, 10)
+# print(p1.get_coord())
+# # p1.set_coord(100.5, 200.3)
+# # print(p1.get_coord())
+# p1.set_x(50)
+# print(p1.get_x())
+# p1.set_y(30)
+# print(p1.get_y())
+# p1._Point__x = 111
+# print(p1.__dict__)
+# print(p1._Point__x)
+
+
+# class Rectangle:
+#     __slots__ = ("__length", "__width", "x")
+#
+#     def __init__(self, length, width):
+#         self.__length = length
+#         self.__width = width
+#
+#     def __check_value(a):
+#         if isinstance(a, int) or isinstance(a, float):
+#             return True
+#         return False
+#
+#     def set_length(self, length):
+#         if Rectangle.__check_value(length):
+#             self.__length = length
+#
+#     def set_width(self, width):
+#         if Rectangle.__check_value(width):
+#             self.__width = width
+#
+#     def get_width(self):
+#         return self.__width
+#
+#     def get_length(self):
+#         return self.__length
+#
+#     def get_area(self):
+#         return self.__length * self.__width
+#
+#     def get_perimeter(self):
+#         return 2 * (self.__length + self.__width)
+#
+#     def get_hypotenuse(self):
+#         return round(math.sqrt(self.__length ** 2 + self.__width ** 2), 2)
+#
+#     def get_draw(self):
+#         print(("*" * self.__width + "\n") * self.__length)
+#
+#
+# rect = Rectangle(4, 12)
+# rect.set_length(3)
+# rect.set_width(9)
+# print("Длина прямоугольника:", rect.get_length())
+# print("Ширина прямоугольника:", rect.get_width())
+# print("Площадь прямоугольника:", rect.get_area())
+# print("Периметр прямоугольника:", rect.get_perimeter())
+# print("Гипотенуза прямоугольника:", rect.get_hypotenuse())
+# rect.get_draw()
+# rect.x = 20
+# print(rect.x)
+# print(rect.__dict__)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __set_x(self, x):
+#         self.__x = x
+#         print("Сеттер")
+#
+#     def __get_x(self):
+#         print("Геттер")
+#         return self.__x
+#
+#     def __del_x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     x = property(__get_x, __set_x, __del_x)
+#
+#
+# p1 = Point(5, 10)
+# p1.x = 100
+# print(p1.x)
+# del p1.x
+# print(p1.__dict__)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __check_value(a):
+#         if isinstance(a, int) or isinstance(a, float):
+#             return True
+#         return False
+#
+#     @property
+#     def x(self):
+#         return self.__x
+#
+#     @x.setter
+#     def x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#
+#     @x.deleter
+#     def x(self):
+#         del self.__x
+#
+#     # x = property(__get_x, __set_x, __del_x)
+#
+#
+# p1 = Point(5, 10)
+# p1.x = 100
+# print(p1.x)
+# del p1.x
+# print(p1.__dict__)
+
+
+# class KgToPounds:
+#     def __init__(self, kg):
+#         self.__kg = kg
+#
+#     @property
+#     def kg(self):
+#         return self.__kg
+#
+#     @kg.setter
+#     def kg(self, new_kg):
+#         if isinstance(new_kg, (int, float)):
+#             self.__kg = new_kg
+#         else:
+#             print("Килограммы задаются только числами")
+#
+#     def to_pound(self):
+#         return self.__kg * 2.205
+#
+#
+# weight = KgToPounds(12)
+# print(weight.kg, "кг =>", weight.to_pound(), "фунтов")
+# weight.kg = 41
+# print(weight.kg, "кг =>", weight.to_pound(), "фунтов")
+# weight.kg = "два"
+
+
+# class Point:
+#     __count = 0
+#
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#         Point.__count += 1
+#
+#     @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+# p4 = Point()
+# p5 = Point()
+#
+# print(Point.get_count())
+
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+#
+#     @staticmethod
+#     def dec(x):
+#         return x - 1
+#
+#
+# ch = Change()
+# print(ch.inc(10), Change.dec(10))
+
+# class Date:
+#     def __init__(self, day, month, year):
+#         self.day = day
+#         self.month = month
+#         self.year = year
+#
+#     @classmethod
+#     def from_string(cls, string_date):
+#         day, month, year = map(int, string_date.split("."))
+#         return cls(day, month, year)
+#
+#     @staticmethod
+#     def is_date_valid(date_as_string):
+#         if date_as_string.count('.') == 2:
+#             day, month, year = map(int, date_as_string.split("."))
+#             return day <= 31 and month <= 12 and year <= 3999
+#
+#     def string_to_db(self):
+#         return f"{self.year}-{self.month}-{self.day}"
+#
+#
+# dates = [
+#     "15.12.2024",
+#     "23-10-2023",
+#     "01.01.2021",
+#     "12.31.2020"
+# ]
+#
+# for d in dates:
+#     if Date.is_date_valid(d):
+#         date = Date.from_string(d)
+#         print(date.string_to_db())
+#     else:
+#         print("Неправильная дата или формат строки с датой")
+
+# date2 = Date(23, 10, 2023)
+# date2 = Date.from_string("23-10-2023")
+# print(date2.string_to_db())
+# date3 = Date.from_string("15.12.2024")
+# print(date3.string_to_db())
+
+# day, month, year = map(int, string_date.split("."))  # [23, 10, 2023']
+# date = Date(day, month, year)
+
+
+# class Account:
+#     rate_usd = 0.013
+#     rate_eur = 0.011
+#     suffix = "RUB"
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, surname, num, percent, value):
+#         self.surname = surname
+#         self.num = num
+#         self.percent = percent
+#         self.value = value
+#         print(f"Счет #{self.num} принадлежащий {self.surname} был открыт.")
+#         print("*" * 50)
+#
+#     def __del__(self):
+#         print("*" * 50)
+#         print(f"Счет #{self.num} принадлежащий {self.surname} был закрыт.")
+#
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.value, Account.rate_usd)
+#         print(f"Состояние счета: {usd_val} {Account.suffix_usd}.")
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self.value, Account.rate_eur)
+#         print(f"Состояние счета: {eur_val} {Account.suffix_eur}.")
+#
+#     def edit_owner(self, surname):
+#         self.surname = surname
+#
+#     def add_percents(self):
+#         self.value += self.value * self.percent
+#         print("Проценты были успешно начислены!")
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self.value:
+#             print(f"К сожалению у вас нет {val} {Account.suffix}")
+#         else:
+#             self.value -= val
+#             print(f"{val} {Account.suffix} было успешно снято!")
+#         self.print_balance()
+#
+#     def add_money(self, val):
+#         self.value += val
+#         print(f"{val} {Account.suffix} было успешно добавлено!")
+#         self.print_balance()
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс {self.value} {Account.suffix}")
+#
+#     def print_info(self):
+#         print("Информация о счете:")
+#         print("-" * 20)
+#         print(f"#{self.num}")
+#         print(f"Владелец: {self.surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self.percent:.0%}")
+#         print("-" * 20)
+#
+#
+# acc = Account("Долгих", "12345", 0.03, 1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+#
+# Account.set_usd_rate(2)
+# acc.convert_to_usd()
+# Account.set_eur_rate(3)
+# acc.convert_to_eur()
+# print()
+#
+# acc.edit_owner("Дюма")
+# acc.print_info()
+# print()
+#
+# acc.add_percents()
+# print()
+#
+# acc.withdraw_money(3000)
+# print()
+#
+# acc.withdraw_money(100)
+# print()
+#
+# acc.add_money(5000)
+# print()
+#
+# acc.withdraw_money(3000)
+# print()
+
+
+# class UserDate:
+#     def __init__(self, fio, old, ps, weight):
+#         self.fio = fio
+#         self.old = old
+#         self.password = ps
+#         self.weight = weight
+#
+#     @staticmethod
+#     def verify_fio(fio):
+#         if not isinstance(fio, str):
+#             raise TypeError("ФИО должно быть строкой")
+#         f = fio.split()  # ['Волков', 'Игорь', 'Николаевич']
+#         if len(f) != 3:
+#             raise TypeError("Неверный формат ФИО")
+#         # ['В', 'о', 'л', 'к', 'о', 'в', 'И', 'г', 'о', 'р', 'ь', 'Н', 'и', 'к', 'о', 'л', 'а', 'е', 'в', 'и', 'ч']
+#         letters = "".join(re.findall('[a-zа-яё-]', fio, re.IGNORECASE))  # ВолковИгорьНиколаевич
+#         for s in f:
+#             if len(s.strip(letters)) != 0:
+#                 raise TypeError("В ФИО можно использовать только буквы и дефис")
+#
+#     @staticmethod
+#     def verify_old(old):
+#         if not isinstance(old, int) or old < 14 or old > 120:
+#             raise TypeError("Возраст должен быть числом в диапазоне от 14 до 120 лет")
+#
+#     @staticmethod
+#     def verify_weight(w):
+#         if not isinstance(w, float) or w < 30:
+#             raise TypeError("Вес должен быть вещественным числом от 30 кг и выше")
+#
+#     @staticmethod
+#     def verify_ps(ps):
+#         if not isinstance(ps, str):
+#             raise TypeError("Паспорт должен быть строкой")
+#         s = ps.split()  # ['1234', '567890']
+#         if len(s) != 2 or len(s[0]) != 4 or len(s[1]) != 6:
+#             raise TypeError("Неверный формат паспорта")
+#         for p in s:
+#             if not p.isdigit():
+#                 raise TypeError("Серия и номер паспорта должны быть числами")
+#
+#     @property
+#     def fio(self):
+#         return self.__fio
+#
+#     @fio.setter
+#     def fio(self, fio):
+#         self.verify_fio(fio)
+#         self.__fio = fio
+#
+#     @property
+#     def old(self):
+#         return self.__old
+#
+#     @old.setter
+#     def old(self, year):
+#         self.verify_old(year)
+#         self.__old = year
+#
+#     @property
+#     def password(self):
+#         return self.__password
+#
+#     @password.setter
+#     def password(self, value):
+#         self.verify_ps(value)
+#         self.__password = value
+#
+#     @property
+#     def weight(self):
+#         return self.__weight
+#
+#     @weight.setter
+#     def weight(self, value):
+#         self.verify_weight(value)
+#         self.__weight = value
+#
+#
+# p1 = UserDate("Волков Игорь Николаевич", 26, "1234 567890", 80.8)  # "Волков Игорь Николаевич"
+#
+# # p1.fio = "Соболев Игорь Николаевич"
+# print(p1.__dict__)
+
+
+# class Point:  # (object)
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         # return "(" + str(self.__x) + ", " + str(self.__y) + ")"
+#         return f"({self.__x}, {self.__y})"
+#
+#
+# # print(issubclass(Point, object))
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self.__width = width
+#         print("Переопределенный инициализатор Prop")
+#
+#     def get_width(self):
+#         return self.__width
+#
+#
+# class Line(Prop):
+#     def __init__(self, *args):
+#         # Prop.__init__(self, *args)
+#         super().__init__(*args)
+#         print("Переопределенный инициализатор Line")
+#
+#     def draw_line(self):  # -> None
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self.get_width()}")
+#
+#
+# # class Rect(Prop):
+# #     def draw_rect(self):  # -> None
+# #         print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# line = Line(Point(1, 2), Point(10, 20), "yellow", 5)
+# # print(line._color)
+#
+# line.draw_line()
+# rect = Rect(Point(30, 40), Point(70, 80))
+# rect.draw_rect()
+# print(issubclass(Line, Prop))
+# print(issubclass(Line, Rect))
+# print(Point.__dict__)
+# print(Line.__dict__)
+# print(Prop.__dict__)
+
+
+# class Figure:
+#     def __init__(self, color):
+#         self.color = color
+#
+#
+# class Rectangle(Figure):
+#     def __init__(self, color, width, height):
+#         super().__init__(color)
+#         self.__width = width
+#         self.__height = height
+#
+#     @property
+#     def width(self):
+#         return self.__width
+#
+#     @width.setter
+#     def width(self, w):
+#         if w > 0:
+#             self.__width = w
+#         else:
+#             raise ValueError("Ширина должна быть положительным числом")
+#
+#     @property
+#     def height(self):
+#         return self.__height
+#
+#     @height.setter
+#     def height(self, h):
+#         if h > 0:
+#             self.__height = h
+#         else:
+#             raise ValueError("Высота должна быть положительным числом")
+#
+#     def area(self):
+#         print(f"Площадь {self.color} прямоугольника:", end=" ")
+#         return self.__width * self.__height
+#
+#
+# rect = Rectangle("green", 10, 20)
+# print(rect.color)
+# # rect.width = -50
+# # print(rect.width)
+# print(rect.area())
+
+# class Rect:
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
+#
+#     def show_rect(self):
+#         print(f"Прямоугольник:\nШирина: {self.width}\nВысота: {self.height}")
+#
+#
+# class RectFon(Rect):
+#     def __init__(self, width, height, background):
+#         super().__init__(width, height)
+#         self.fon = background
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print("Фон:", self.fon)
+#
+#
+# class RectBorder(Rect):
+#     def __init__(self, width, height, px, solid, red):
+#         super().__init__(width, height)
+#         self.px = px
+#         self.solid = solid
+#         self.red = red
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print(f"Рамка: {self.px} {self.solid} {self.red}")
+#
+#
+# shape1 = RectFon(400, 200, "yellow")
+# shape1.show_rect()
+# print()
+# shape2 = RectBorder(600, 300, "1px", "solid", "red")
+# shape2.show_rect()
+
+
+# class Vector(set):
+#     def __str__(self):
+#         return " ".join(map(str, self))
+#         # return " ".join(self)
+#
+#
+# # v = Vector({"b", "a", "c"})
+# v = Vector({1, 2, 3})
+# print(v)
+# print(type(v))
+
+
+# class Point:  # (object)
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         # return "(" + str(self.__x) + ", " + str(self.__y) + ")"
+#         return f"({self.__x}, {self.__y})"
+#
+#
+# # print(issubclass(Point, object))
+#
+#
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#
+# class Line(Prop):
+#     def draw_line(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#     def set_coord(self, sp: Point = None, ep: Point = None):
+#         if ep is None:
+#             self._sp = sp
+#         elif sp is None:
+#             self._ep = ep
+#         else:
+#             self._sp = sp
+#             self._ep = ep
+#
+#
+# line = Line(Point(1, 2), Point(10, 20))
+# line.draw_line()
+# line.set_coord(Point(12, 18), Point(100, 200))
+# line.draw_line()
+# line.set_coord(Point(-10, -20))
+# line.draw_line()
+#
+# line.set_coord(ep=Point(500, 700))
+# line.draw_line()
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def draw(self):
+#         raise NotImplementedError("В дочернем классе должен быть реализован метод draw()")
+#
+#
+# class Line(Prop):
+#     def draw(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# class Rect(Prop):
+#     def draw(self):
+#         print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# class Ellipse(Prop):
+#     def draw(self):
+#         print(f"Рисование эллипса: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# figs = list()
+# figs.append(Line(Point(0, 0), Point(10, 10)))
+# figs.append(Line(Point(10, 10), Point(20, 10)))
+# figs.append(Rect(Point(50, 50), Point(100, 100)))
+# figs.append(Ellipse(Point(-10, -10), Point(30, 30)))
+#
+# for f in figs:
+#     f.draw()
+
+
+# Абстрактные методы
+# Абстрактный класс
+
+# from abc import ABC, abstractmethod
+#
+#
+# class Chess(ABC):  # абстрактный класс
+#     def draw(self):
+#         print("Нарисовал шахматную фигуру")
+#
+#     @abstractmethod
+#     def move(self):  # абстрактный метод
+#         print("Метод move() в базовом классе")
+#
+#
+# class Queen(Chess):
+#     def move(self):
+#         super().move()
+#         print("Ферзь перемещен на e2e4")
+#
+#
+# q = Queen()
+# q.draw()
+# q.move()
+
+# from math import pi
+#
+#
+# class Table:
+#     def __init__(self, width=None, length=None, radius=None):
+#         if radius is None:
+#             if length is None:
+#                 self._width = self._length = width
+#             else:
+#                 self._width = width
+#                 self._length = length
+#         else:
+#             self._radius = radius
+#
+#     def calc_area(self):
+#         raise NotImplementedError("В дочернем классе должен быть определен метод calc_area()")
+#
+#
+# class SqTable(Table):
+#     def calc_area(self):
+#         return self._width * self._length
+#
+#
+# class RoundTable(Table):
+#     def calc_area(self):
+#         return round(pi * self._radius ** 2, 2)
+#
+#
+# t = SqTable(20, 10)
+# print(t.__dict__)
+# print(t.calc_area())
+#
+# t1 = SqTable(20)
+# print(t1.__dict__)
+# print(t1.calc_area())
+#
+# t2 = RoundTable(radius=20)
+# print(t2.__dict__)
+# print(t2.calc_area())
+
+
+# from abc import ABC, abstractmethod
+#
+#
+# class Currency(ABC):
+#     suffix = "RUB"
+#
+#     def __init__(self, value):
+#         self.value = value
+#
+#     @abstractmethod
+#     def convert_to_rub(self):
+#         pass
+#
+#     @abstractmethod
+#     def print_value(self):
+#         print(self.value, end=" ")
+#
+#     def show(self):
+#         print(f"= {self.convert_to_rub():.2f} {Currency.suffix}")
+#
+#
+# class Dollar(Currency):
+#     rate_to_rub = 74.16
+#     suffix = "USD"
+#
+#     def convert_to_rub(self):
+#         return self.value * Dollar.rate_to_rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Dollar.suffix, end=" ")
+#
+#
+# class Euro(Currency):
+#     rate_to_rub = 90.14
+#     suffix = "EUR"
+#
+#     def convert_to_rub(self):
+#         return self.value * Euro.rate_to_rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Euro.suffix, end=" ")
+#
+#
+# d = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
+# e = [Euro(5), Euro(10), Euro(50), Euro(100)]
+# print("*" * 50)
+# for elem in d:
+#     elem.print_value()
+#     elem.show()
+#
+# print("*" * 50)
+# for elem in e:
+#     elem.print_value()
+#     elem.show()
+
+
+# Интерфейсы
+
+# from abc import ABC, abstractmethod
+#
+#
+# class Father(ABC):
+#     @abstractmethod
+#     def display1(self):
+#         pass
+#
+#     @abstractmethod
+#     def display2(self):
+#         pass
+#
+#
+# class Child(Father):
+#     def display1(self):
+#         print("Child Class")
+#
+#
+# class GrandChild(Child):
+#     def display2(self):
+#         print("GrandChild Class")
+#
+#
+# ch = GrandChild()
+# ch.display1()
+# ch.display2()
+
+
+# Вложенные классы
+
+# class MyOuter:
+#     age = 18
+#
+#     def __init__(self, name):
+#         self.name = name
+#
+#     @staticmethod
+#     def outer_method():
+#         print("outer_method")
+#
+#     def instance_method(self):
+#         print("instance_method")
+#
+#     class MyInner:
+#         def __init__(self, inner_name, obj):
+#             self.inner_name = inner_name
+#             self.obj = obj
+#
+#         def inner_method(self):
+#             print("Вложенный метод", MyOuter.age, self.obj.name)
+#             MyOuter.outer_method()
+#             self.obj.instance_method()
+#
+#
+# out = MyOuter('внешний')
+# print(out.name)
+# inner = out.MyInner('внутренний', out)
+# print(inner.inner_name)
+# inner.inner_method()
+
+# class DarkGreen:
+#     def __init__(self):
+#         self.name = "Dark Green"
+#
+#     def display(self):
+#         print("Name:", self.name)
+#
+#
+# class Color:
+#     def __init__(self):
+#         self.name = "Green"
+#         self.lg = self.LightGreen()
+#         self.dg = DarkGreen()
+#
+#     def show(self):
+#         print("Name:", self.name)
+#
+#     class LightGreen:
+#         def __init__(self):
+#             self.name = "Light Green"
+#
+#         def display(self):
+#             print("Name:", self.name)
+#
+#
+# outer = Color()
+# outer.show()
+# g = outer.lg
+# g.display()
+# g2 = outer.dg
+# g2.display()
+# print(g2.name)
+
+# class Computer:
+#     def __init__(self):
+#         self.name = "PC001"
+#         # self.os = self.OS()
+#         # self.cpu = self.CPU()
+#
+#     class OS:
+#         def system(self):
+#             return "Windows 10"
+#
+#     class CPU:
+#         def make(self):
+#             return "Intel"
+#
+#         def model(self):
+#             return "Core-i7"
+#
+#
+# comp = Computer()
+# my_os = comp.os
+# my_cpu = comp.cpu
+# my_os = Computer().OS()
+# my_cpu = Computer().CPU()
+# print(comp.name)
+# print(my_os.system())
+# print(my_cpu.make())
+# print(my_cpu.model())
+
+
+# class Cat:
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def __repr__(self):
+#         return f"{self.__class__}: {self.name}"
+#
+#     def __str__(self):
+#         return f"{self.name}"
+#
+#
+# cat = [Cat("Пушок"), Cat("Мурзик")]
+# print(cat)
+
+# class Point:
+#     def __init__(self, *args):
+#         self.coord = args  # tuple(1, 2, 5)
+#         self.color = "red"
+#         self.width = 2
+#
+#     def __len__(self):
+#         return len(self.coord)
+#
+#
+# p = Point(1, 2, 5)
+# print(len(p))
+#
+# s = list((1, 2))
+# print(len(s))
+
+# import math
+#
+#
+# class Point:
+#     __slots__ = ('x', 'y', '__length')
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         self.length = math.sqrt(x * x + y * y)
+#
+#     @property
+#     def length(self):
+#         return self.__length
+#
+#     @length.setter
+#     def length(self, value):
+#         self.__length = value
+#
+#
+# p1 = Point(10, 20)
+# print(p1.x, p1.y)
+# # p1.z = 30
+# # print(p1.z)
+# p1.length = 20
+# print(p1.length)
+
+
+# class Point:
+#     __slots__ = ('x', 'y')
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# class Point2:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# pt1 = Point(1, 2)
+# pt2 = Point2(1, 2)
+# print("pt1 =", pt1.__sizeof__())
+# print("pt2 =", pt2.__sizeof__() + pt2.__dict__.__sizeof__())
+
+
+# class Point:
+#     __slots__ = ('x', 'y')
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# class Point3D(Point):
+#     __slots__ = 'z'
+#
+#     def __init__(self, x, y, z):
+#         super().__init__(x, y)
+#         self.z = z
+#
+#
+# pt1 = Point(1, 2)
+# pt3 = Point3D(10, 20, 30)
+# # pt3.z = 3
+# print(pt3.z)
+
+# Множественное наследование
+
+# class Creature:
+#     def __init__(self, name):
+#         self.name = name
+#
+#
+# class Animal(Creature):
+#     def sleep(self):
+#         print(self.name + " is sleeping")
+#
+#
+# class Pet(Creature):
+#     def play(self):
+#         print(self.name + " is playing")
+#
+#
+# class Dog(Animal, Pet):
+#     def bark(self):
+#         print(self.name + " is barking")
+#
+#
+# beast = Dog("Buddy")
+# beast.bark()
+# beast.sleep()
+# beast.play()
+
+
+# class A:
+#     def __init__(self):
+#         print("Инициализатор класса А")
+#
+#
+# class AA:
+#     def __init__(self):
+#         print("Инициализатор класса АA")
+#
+#
+# class B(A):
+#     def __init__(self):
+#         print("Инициализатор класса B")
+#
+#
+# class C(AA):
+#     def __init__(self):
+#         print("Инициализатор класса C")
+#
+#
+# class D(B, C):
+#     def __init__(self):
+#         print("Инициализатор класса D")
+#         # B.__init__(self)
+#         super().__init__()
+#         C.__init__(self)
+#
+#
+# d = D()
+# print(D.mro())
+# # print(D.__mro__)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#
+# class Styles:
+#     def __init__(self, color="red", width=1):
+#         print("Инициализатор Styles")
+#         self._color = color
+#         self._width = width
+#
+#
+# class Pos:
+#     def __init__(self, sp: Point, ep: Point, color="red", width=1):
+#         print("Инициализатор Pos")
+#         self._sp = sp
+#         self._ep = ep
+#         # Styles.__init__(self, color, width)
+#         super().__init__(color, width)
+#
+#
+# class Line(Pos, Styles):
+#     def draw(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# l1 = Line(Point(10, 10), Point(100, 100), "green", 5)   #
+# l1.draw()
+#
+# print(Line.mro())
+
+
+# Миксины
+
+# class Goods:
+#     def __init__(self, name, weight, price):
+#         print("Init Goods")
+#         self.name = name
+#         self.weight = weight
+#         self.price = price
+#         super().__init__()
+#
+#     def print_info(self):
+#         print(f"{self.name}, {self.weight}, {self.price}")
+#
+#
+# class MixinLog:
+#     ID = 0
+#
+#     def __init__(self):
+#         print("Init Mixin")
+#         MixinLog.ID += 1
+#         self.id = MixinLog.ID
+#
+#     def save_sell_log(self):
+#         print(f"{self.id}: товар был продан в 00:00 часов")
+#
+#
+# class NoteBook(Goods, MixinLog):
+#     pass
+#
+#
+# n = NoteBook("HP", 1.5, 35000)
+# n.print_info()
+# n.save_sell_log()
+#
+# n1 = NoteBook("HP", 1.5, 35000)
+# n1.save_sell_log()
+
+
+# Перегрузка операторов
+
+# 24 * 60 * 60 = 86400  - число секунд в одном дне
+
+class Clock:
+    __DAY = 86400
+
+    def __init__(self, sec: int):
+        if not isinstance(sec, int):
+            raise ValueError("Секунды должны быть целым числом")
+        self.sec = sec % self.__DAY
+
+    def get_format_time(self):
+        s = self.sec % 60
+        m = (self.sec // 60) % 60
+        h = (self.sec // 3600) % 24
+        return f"{Clock.get_form(h)}:{Clock.get_form(m)}:{Clock.get_form(s)}"
+
+    @staticmethod
+    def get_form(x):
+        return str(x) if x > 9 else "0" + str(x)
+
+    def __add__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return Clock(self.sec + other.sec)
+
+    def __eq__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        if self.sec == other.sec:
+            return True
+        return False
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+
+c1 = Clock(100)
+c2 = Clock(200)
+# c4 = Clock(300)
+print(c1.get_format_time())
+print(c2.get_format_time())
+# print(c4.get_format_time())
+# c3 = c1 + c2 + c4
+# print(c3.get_format_time())
+# c1 += c2
+# print(c1.get_format_time())
+# if c1 == c2:
+#     print("Время равно")
+# else:
+#     print("Время разное")
+
+if c1 != c2:
+    print("Время разное")
+else:
+    print("Время равно")
