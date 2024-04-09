@@ -12,3 +12,5 @@ def count_negative_digits(lst):
 
 
 print(count_negative_digits(digitsList))
+
+ 

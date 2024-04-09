@@ -3011,8 +3011,8 @@
 # print(f"{fio[0]} {fio[1][0]}.{fio[2][0]}.")
 
 # Регулярные выражения
-import math
-import re
+# import math
+# import re
 
 
 # s = "Я ищу совпадение в 2024 году. И я их найду в 2 счёта."
@@ -3246,8 +3246,6 @@ import re
 #
 #
 # print(to_str(254, 10))  # to_str(254, 16) => FE
-
-
 
 
 # names = ["Adam", ["Bob", ["Chet", "Cat", ["1", ["2", ["3"]]]], "Bard", "Bert"], "Alex", ["Bea", "Bill"], "Ann"]
@@ -3520,7 +3518,7 @@ import re
 # создавая промежуточные директории
 
 
-# for root, dirs, files in os.walk("nested1", topdown=False):
+# for root, dirs, files in os.walk("./files", topdown=False):
 #     print("Root:", root)
 #     print("\tSubdirs:", dirs)
 #     print("\t\tFiles:", files)
@@ -5037,4 +5035,3 @@ import re
 # else:
 #     print("Время равно")
 #
-
