@@ -44,7 +44,7 @@ class Car:
     def get_color(self):
         print(self.color)
 
-    def set_price(self,price):
+    def set_price(self, price):
         self.price = price
 
     def get_price(self):
@@ -66,6 +66,5 @@ id1.get_manufacturer()
 id1.get_engine_power()
 id1.get_color()
 id1.get_price()
-
 
 id1.print_info()
