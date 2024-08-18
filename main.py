@@ -4437,6 +4437,7 @@
 #         else:
 #             self._sp = sp
 #             self._ep = ep
+
 #
 #
 # line = Line(Point(1, 2), Point(10, 20))
@@ -6462,7 +6463,6 @@
 
 
 import sqlite3
-
 
 # con = sqlite3.connect("profile.db")
 # cur = con.cursor()
