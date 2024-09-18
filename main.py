@@ -4437,7 +4437,6 @@
 #         else:
 #             self._sp = sp
 #             self._ep = ep
-
 #
 #
 # line = Line(Point(1, 2), Point(10, 20))
@@ -6120,49 +6119,49 @@
 #         print("Введен некорректный номер")
 
 
-import requests
-import json
-
-response = requests.get("https://jsonplaceholder.typicode.com/todos")
-todos = json.loads(response.text)
-
-todos_by_user = {}  # {1: 11, 2: 8, 3: 7, 4: 6, 5: 12, 6: 6, 7: 9, 8: 11, 9: 8, 10: 12}
-
-for todo in todos:
-    if todo["completed"]:
-        try:
-            todos_by_user[todo['userId']] += 1  # {1: 2}
-        except KeyError:
-            todos_by_user[todo['userId']] = 1  # {1: 1, 2: 1, 3: 1}
-print(todos_by_user)
-
-top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
-print(top_users)  # [(5, 12), (10, 12), (1, 11), (8, 11), (7, 9), (2, 8), (9, 8), (3, 7), (4, 6), (6, 6)]
-
-max_complete = top_users[0][1]
-print(max_complete)  # 12
-
-users = []
-for user, num_complete in top_users:
-    if num_complete < max_complete:  # 11 < 12
-        break
-    users.append(str(user))
-print(users)  # ['5', '10']
-
-max_users = " and ".join(users)
-print(max_users)
-print(f"Users {max_users} completed {max_complete} Todos")
-
-
-def keep(todo):
-    completed = todo["completed"]
-    max_count = str(todo["userId"]) in users
-    return completed and max_count
-
-
-with open("filter_file.json", "w") as f:
-    filtered = list(filter(keep, todos))
-    json.dump(filtered, f, indent=2)
+# import requests
+# import json
+#
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# todos = json.loads(response.text)
+#
+# todos_by_user = {}  # {1: 11, 2: 8, 3: 7, 4: 6, 5: 12, 6: 6, 7: 9, 8: 11, 9: 8, 10: 12}
+#
+# for todo in todos:
+#     if todo["completed"]:
+#         try:
+#             todos_by_user[todo['userId']] += 1  # {1: 2}
+#         except KeyError:
+#             todos_by_user[todo['userId']] = 1  # {1: 1, 2: 1, 3: 1}
+# print(todos_by_user)
+#
+# top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
+# print(top_users)  # [(5, 12), (10, 12), (1, 11), (8, 11), (7, 9), (2, 8), (9, 8), (3, 7), (4, 6), (6, 6)]
+#
+# max_complete = top_users[0][1]
+# print(max_complete)  # 12
+#
+# users = []
+# for user, num_complete in top_users:
+#     if num_complete < max_complete:  # 11 < 12
+#         break
+#     users.append(str(user))
+# print(users)  # ['5', '10']
+#
+# max_users = " and ".join(users)
+# print(max_users)
+# print(f"Users {max_users} completed {max_complete} Todos")
+#
+#
+# def keep(todo):
+#     completed = todo["completed"]
+#     max_count = str(todo["userId"]) in users
+#     return completed and max_count
+#
+#
+# with open("filter_file.json", "w") as f:
+#     filtered = list(filter(keep, todos))
+#     json.dump(filtered, f, indent=2)
 
 
 # import csv
@@ -6462,7 +6461,8 @@ with open("filter_file.json", "w") as f:
 #     run()
 
 
-import sqlite3
+# import sqlite3
+
 
 # con = sqlite3.connect("profile.db")
 # cur = con.cursor()
@@ -6477,3 +6477,356 @@ import sqlite3
 #     summa REAL,
 #     date BLOB)""")
 #     cur.execute("DROP TABLE users")
+
+# with sqlite3.connect("users.db") as con:
+#     cur = con.cursor()
+#
+#     cur.execute("""
+#     DROP TABLE person_table
+#     """)
+
+# cur.execute("""
+# ALTER TABLE person_table
+# DROP COLUMN home_address
+# """)
+
+# cur.execute("""
+# ALTER TABLE person_table
+# RENAME COLUMN address TO home_address
+# """)
+
+# cur.execute("""
+# ALTER TABLE person_table
+# ADD COLUMN address_add TEXT NOT NULL DEFAULT "Москва";
+# """)
+
+# cur.execute("""
+# ALTER TABLE person
+# RENAME TO person_table;
+# """)
+
+# cur.execute("""
+# CREATE TABLE IF NOT EXISTS person(
+# id INTEGER PRIMARY KEY AUTOINCREMENT,
+# name TEXT NOT NULL,
+# phone BLOB NOT NULL DEFAULT "+79099000000",
+# age INTEGER CHECK(age > 0 AND age < 100),
+# email TEXT UNIQUE
+# )""")
+
+
+# with sqlite3.connect("db_4.db") as con:
+#     cur = con.cursor()
+#
+#     cur.execute("""
+#     SELECT *
+#     FROM Ware
+#     ORDER BY Price DESC
+#     LIMIT 2, 5
+#     """)
+#
+#     # res = cur.fetchall()  # [(), ()]
+#     # res = cur.fetchone()  # ()
+#     # print(res)
+#     # res = cur.fetchmany(3)  # [()]
+#     # print(res)
+#
+#     for res in cur:
+#         print(res)
+
+
+# import sqlite3
+
+# cars_list = [
+#     ('BMW', 54000),
+#     ('Chevrolet', 46000),
+#     ('Daewoo', 38000),
+#     ('Citroen', 29000),
+#     ('Honda', 33000),
+# ]
+#
+# with sqlite3.connect("car.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS cars (
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER
+#     )
+#     """)
+#
+#     cur.executescript("""
+#     DELETE FROM cars WHERE model LIKE 'B%';
+#     UPDATE cars SET price = price + 100;
+#     """)
+
+# cur.execute(f"UPDATE cars SET price = :Price where model LIKE 'B%'", {'Price': 0})
+
+# cur.executemany("INSERT INTO cars VALUES(NULL, ?, ?)", cars_list)
+
+# for car in cars_list:
+#     cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
+
+# cur.execute("INSERT INTO cars VALUES(1, 'Renault', 22000)")
+# cur.execute("INSERT INTO cars VALUES(2, 'Volvo', 29000)")
+# cur.execute("INSERT INTO cars VALUES(3, 'Mercedes', 57000)")
+# cur.execute("INSERT INTO cars VALUES(4, 'Bentley', 35000)")
+# cur.execute("INSERT INTO cars VALUES(5, 'Audi', 52000)")
+
+# con.commit()
+# con.close()
+
+
+# import sqlite3
+#
+# con = None
+# try:
+#     con = sqlite3.connect("car.db")
+#     cur = con.cursor()
+#     cur.executescript("""
+#     CREATE TABLE IF NOT EXISTS cars (
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER
+#     );
+#     BEGIN;
+#     INSERT INTO cars VALUES(NULL, 'Renault', 22000);
+#     UPDATE cars2 SET price = price + 100;
+#     """)
+#     con.commit()
+# except sqlite3.Error as e:
+#     if con:
+#         con.rollback()
+#     print("Ошибка выполнения запроса")
+# finally:
+#     if con:
+#         con.close()
+
+
+# import sqlite3
+#
+# with sqlite3.connect("car.db") as con:
+#     con.row_factory = sqlite3.Row
+#     cur = con.cursor()
+#     cur.executescript("""
+#     CREATE TABLE IF NOT EXISTS cars (
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER
+#     );
+#     CREATE TABLE IF NOT EXISTS cost (
+#         name TEXT, tr_in INTEGER, buy INTEGER
+#     );
+#     """)
+#
+#     # cur.execute("INSERT INTO cars VALUES(NULL, 'Запорожец', 1000)")
+#     # last_row_id = cur.lastrowid
+#     # buy_car_id = 2
+#     # cur.execute("INSERT INTO cost VALUES('Илья', ?, ?)", (last_row_id, buy_car_id))
+#
+#     cur.execute("SELECT model, price FROM cars")
+#
+#     # rows = cur.fetchall()
+#     # print(rows)
+#     # rows = cur.fetchone()
+#     # print(rows)
+#     # rows = cur.fetchmany(5)
+#     # print(rows)
+#     # print()
+#     for res in cur:
+#         # print(res[0], res[1])
+#         print(res['model'], res['price'])
+
+
+# import sqlite3
+#
+#
+# def read_ava(n):
+#     try:
+#         with open(f"avatars/{n}.png", "rb") as f:
+#             return f.read()
+#     except IOError as e:
+#         print(e)
+#         return False
+#
+#
+# def write_ava(name, data):
+#     try:
+#         with open(name, "wb") as f:
+#             f.write(data)
+#     except IOError as e:
+#         print(e)
+#         return False
+#     return True
+#
+#
+# with sqlite3.connect("car.db") as con:
+#     con.row_factory = sqlite3.Row
+#     cur = con.cursor()
+#
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS users (
+#         name TEXT,
+#         ava BLOB,
+#         score INTEGER
+#     )""")
+#
+#     # img = read_ava(1)
+#     # if img:
+#     #     binary = sqlite3.Binary(img)
+#     #     cur.execute("INSERT INTO users VALUES ('Илья', ?, 1000)", (binary,))
+#
+#     cur.execute("SELECT ava FROM users")
+#     img = cur.fetchone()['ava']
+#
+#     write_ava("out.png", img)
+
+
+# import sqlite3
+
+# with sqlite3.connect("car.db") as con:
+#     cur = con.cursor()
+#
+#     with open("sql_dump.sql", "w") as f:
+#         for sql in con.iterdump():
+#             f.write(sql)
+
+
+# with sqlite3.connect("car_new.db") as con:
+#     cur = con.cursor()
+#
+#     with open("sql_dump.sql", "r") as f:
+#         sql = f.read()
+#         cur.executescript(sql)
+
+
+# from jinja2 import Template
+
+# name = "Игорь"
+# age = 28
+#
+# tm = Template("Мне {{ a*2 }} лет. Меня зовут {{ n.upper() }}.")
+# msg = tm.render(n=name, a=age)
+#
+# print(msg)
+
+
+# per = {"name": "Игорь", "age": 28}
+#
+# tm = Template("Мне {{ p.age }} лет. Меня зовут {{ p['name'] }}.")
+# msg = tm.render(p=per)
+#
+# print(msg)
+
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#
+#     def get_name(self):
+#         return self.name
+#
+#
+# per = Person("Игорь", 28)
+#
+# tm = Template("Мне {{ p.age }} лет. Меня зовут {{ p.get_name() }}.")
+# msg = tm.render(p=per)
+#
+# print(msg)
+
+# cities = [
+#     {"id": 1, "city": "Москва"},
+#     {"id": 2, "city": "Сочи"},
+#     {"id": 3, "city": "Смоленск"},
+#     {"id": 4, "city": "Ярославль"},
+#     {"id": 5, "city": "Минск"}
+# ]
+#
+# link = """
+# <select name='cities'>
+#     {% for c in cities -%}
+#         {% if c.id > 3 -%}
+#             <option value="{{ c['id'] }}">{{ c['city'] }}</option>
+#         {% elif c.city == "Москва" %}
+#             <option>{{ c['city'] }}</option>
+#         {% else -%}
+#             {{ c['city'] }}
+#         {% endif -%}
+#     {% endfor -%}
+# </select>
+# """
+#
+# tm = Template(link)
+# msg = tm.render(cities=cities)
+#
+# print(msg)
+
+# from jinja2 import Template
+
+# cars = [
+#     {'model': 'Audi', 'price': 23000},
+#     {'model': 'Skoda', 'price': 17300},
+#     {'model': 'Renault', 'price': 44300},
+#     {'model': 'Wolksvagen', 'price': 21300}
+# ]
+#
+# # tp1 = "{{ (cs | min(attribute='price')).model }}"
+# # tp1 = "{{ cs | random }}"
+# tp1 = "{{ cs | replace('model', 'brand') }}"
+# tm = Template(tp1)
+# msg = tm.render(cs=cars)
+#
+# print(msg)
+# print(cars)
+
+# html = '''
+# {% macro get_input(name, value='', type='text', size=20) %}
+#     <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="{{ size }}">
+# {% endmacro %}
+#
+# <p>{{ get_input('username') }}</p>
+# <p>{{ get_input('email') }}</p>
+# <p>{{ get_input('password', type='password') }}</p>
+# '''
+#
+# tm = Template(html)
+# msg = tm.render()
+#
+# print(msg)
+
+
+# from jinja2 import Environment, FileSystemLoader
+
+# persons = [
+#     {"name": "Алексей", "year": 18, "weight": 78.5},
+#     {"name": "Никита", "year": 28, "weight": 82.3},
+#     {"name": "Виталий", "year": 33, "weight": 94.0}
+# ]
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template('main.html')
+# msg = tm.render(users=persons, title="About Jinja")
+#
+# print(msg)
+
+# from jinja2 import Environment, FileSystemLoader
+#
+# subs = ["Культура", "Наука", "Политика", "Спорт"]
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template('about.html')
+# msg = tm.render(list_table=subs)
+#
+# print(msg)
+
+import time
+import math
+
+# tm = math.floor(time.time())
+print(time.time())
+print(math.floor(time.time()))
+
