@@ -6167,7 +6167,7 @@
 # import csv
 
 # with open("data.csv") as f:
-#     file_reader = csv.reader(f, delimiter=";")
+#     file_reader = csv.reader(f)
 #     count = 0
 #     for row in file_reader:
 #         if count == 0:
@@ -6179,14 +6179,14 @@
 
 # with open("data.csv") as f:
 #     file_names = ['Имя', 'Профессия', 'Год рождения']
-#     file_reader = csv.DictReader(f, delimiter=";", fieldnames=file_names)
+#     file_reader = csv.DictReader(f, delimiter=",", fieldnames=file_names)
 #     count = 0
 #     for row in file_reader:
 #         if count == 0:
 #             print(f"Файл содержит столбцы: {', '.join(row)}")
 #         print(f"\t{row['Имя']} - {row['Профессия']}. Родился в {row['Год рождения']} году.")
 #         count += 1
-
+#
 
 # with open("student.csv", "w") as f:
 #     writer = csv.writer(f, delimiter=";", lineterminator="\r")
@@ -6242,15 +6242,15 @@
 #     'model': '3650',
 #     'vendor': 'Cisco'
 # }]
-#
-# with open("dict_writer.csv", "w") as f:
-#     # fieldnames = ['hostname', 'location', 'model', 'vendor']
-#     writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=list(data[0].keys()))
-#     writer.writeheader()
-#     for d in data:
-#         writer.writerow(d)
 
-# print(list(data[0].keys()))
+with open("dict_writer.csv", "w") as f:
+    # fieldnames = ['hostname', 'location', 'model', 'vendor']
+    writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=list(data[0].keys()))
+    writer.writeheader()
+    for d in data:
+        writer.writerow(d)
+
+# print(list(data[0].items()))
 
 
 # Парсинг
@@ -6823,10 +6823,10 @@
 #
 # print(msg)
 
-import time
-import math
-
-# tm = math.floor(time.time())
-print(time.time())
-print(math.floor(time.time()))
-
+# import time
+# import math
+#
+# # tm = math.floor(time.time())
+# print(time.time())
+# print(math.floor(time.time()))
+#
