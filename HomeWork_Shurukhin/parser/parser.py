@@ -27,7 +27,7 @@ class Parser:
             cols = row.find_all('td')
             cols = [col.text.strip() for col in cols]
             self.result.append(cols)
-        # print(self.result[1:-1])
+        print(self.result[1:])
 
     def write_to_csv(self):
         with open(self.path, "w", newline='') as f:
@@ -35,4 +35,4 @@ class Parser:
                           "Забитых мячей", "Пропущенных мячей", "Разница", "Всего очков"]
             writer = csv.writer(f, lineterminator="\r")
             writer.writerow(fieldnames)
-            writer.writerows(self.result[1:-1])
+            writer.writerows(self.result[1:])
