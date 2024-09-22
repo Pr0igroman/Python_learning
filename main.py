@@ -6243,12 +6243,12 @@
 #     'vendor': 'Cisco'
 # }]
 
-with open("dict_writer.csv", "w") as f:
-    # fieldnames = ['hostname', 'location', 'model', 'vendor']
-    writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=list(data[0].keys()))
-    writer.writeheader()
-    for d in data:
-        writer.writerow(d)
+# with open("dict_writer.csv", "w") as f:
+#     # fieldnames = ['hostname', 'location', 'model', 'vendor']
+#     writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=list(data[0].keys()))
+#     writer.writeheader()
+#     for d in data:
+#         writer.writerow(d)
 
 # print(list(data[0].items()))
 
@@ -6309,34 +6309,34 @@ with open("dict_writer.csv", "w") as f:
 
 # import requests
 #
-# r = requests.get("https://ru.wordpress.org/").encode('utf-8')
-# # print(r.content)
+# r = requests.get("https://ru.wordpress.org/")
+# print(r.content)
 # print(r.text)
-# # print(r.status_code)
-# # print(r.headers)
+# print(r.status_code)
+# print(r.headers)
 
-# import requests
-# from bs4 import BeautifulSoup
-#
-#
-# def get_html(url):
-#     r = requests.get(url)
-#     return r.text
-#
-#
-# def get_data(html):
-#     soup = BeautifulSoup(html, "lxml")
-#     p1 = soup.find("header", id="masthead").find("p", class_="site-title").text
-#     return p1
-#
-#
-# def main():
-#     url = "https://ru.wordpress.org/"
-#     print(get_data(get_html(url)))
-#
-#
-# if __name__ == '__main__':
-#     main()
+import requests
+from bs4 import BeautifulSoup
+
+
+def get_html(url):
+    r = requests.get(url)
+    return r.text
+
+
+def get_data(html):
+    soup = BeautifulSoup(html, "lxml")
+    p1 = soup.find(class_="wp-block-heading").text
+    return p1
+
+
+def main():
+    url = "https://ru.wordpress.org/"
+    print(get_data(get_html(url)))
+
+
+if __name__ == '__main__':
+    main()
 
 # import re
 # import requests
